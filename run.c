@@ -20,10 +20,25 @@ int main(void){
 }
 
 void consoleSim(void){
+    char command[64];
+    int exit=0;
     initScrn();
     printf("SigmaTEC Operating System\nRobCO Industries\nAll Rights Reserved 2077.\n\nPress Enter to login.\n");
     getchar();
     login();
+    printf("Tundra@rolling-thunder: ");
+    while(exit != 1){ //COMMANDS BLOCK. Todo: Place commands in an array(?) or a data structure of some sort in order to make code shorter/less bloated.
+        fgets(command, 64, stdin);
+            if(command != NULL){
+                if (strcmp(command, "help\n") == 0){
+                    printf("Available commands:\nhelp - displays help menu\nexit - exits the program");
+                }
+                if (strcmp(command, "exit\n") == 0){
+                    printf("Shutting down...");
+                    exit = 1;
+                }
+            }
+    }
 }
 
 void login(){
